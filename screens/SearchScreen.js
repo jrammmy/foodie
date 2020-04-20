@@ -1,10 +1,14 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet, ScrollView, Text} from 'react-native';
+import RestaurantCard from '../components/restaurant-card';
+import SearchBar from '../components/search-bar';
 
 const SearchScreen = () => {
+  const [term, setTerm] = useState('');
   return (
     <View style={styles.container}>
-      <Text>Search Screen</Text>
+      <SearchBar term={term} onTermChange={newTerm => setTerm(newTerm)}/>
+      <Text>{term}</Text>
     </View>
   );
 };
@@ -12,7 +16,11 @@ const SearchScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 2,
+  },
+  horizontalContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
 
