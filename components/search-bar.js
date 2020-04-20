@@ -4,9 +4,13 @@ import Icon from 'react-native-vector-icons/Feather';
 
 const SearchBar = ({term, onTermChange, onTermSubmit}) => {
   const input = useRef(null);
+  const _onPress = () => {
+    input.current.focus();
+  };
+
   return (
     <View style={styles.searchBarContainer}>
-      <TouchableOpacity style={styles.icon} onPress={input.current.focus()}>
+      <TouchableOpacity style={styles.icon} onPress={_onPress}>
         <Icon name="search" size={40} color="#3e3e3e" />
       </TouchableOpacity>
       <TextInput
