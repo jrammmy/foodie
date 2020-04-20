@@ -1,19 +1,24 @@
-import React from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import React, {useRef} from 'react';
+import {View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 const SearchBar = ({term, onTermChange, onTermSubmit}) => {
+  const input = useRef(null);
   return (
     <View style={styles.searchBarContainer}>
-      <Icon name="search" style={styles.icon} color="#3e3e3e" />
+      <TouchableOpacity style={styles.icon} onPress={input.current.focus()}>
+        <Icon name="search" size={40} color="#3e3e3e" />
+      </TouchableOpacity>
       <TextInput
         style={styles.searchBar}
         placeholder="Search..."
         value={term}
         onChangeText={onTermChange}
         onEndEditing={onTermSubmit}
+        ref={input}
       />
-    </View>);
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
