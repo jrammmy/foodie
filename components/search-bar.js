@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const SearchBar = ({term, onTermChange}) => {
+const SearchBar = ({term, onTermChange, onTermSubmit}) => {
   return (
     <View style={styles.searchBarContainer}>
       <Icon name="search" style={styles.icon} color="#3e3e3e" />
@@ -10,7 +10,8 @@ const SearchBar = ({term, onTermChange}) => {
         style={styles.searchBar}
         placeholder="Search..."
         value={term}
-        onChangeText={(newTerm) => onTermChange(newTerm)}
+        onChangeText={onTermChange}
+        onEndEditing={onTermSubmit}
       />
     </View>);
 };
