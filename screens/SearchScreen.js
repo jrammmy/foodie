@@ -12,7 +12,6 @@ const SearchScreen = () => {
         onTermChange={(newTerm) => setTerm(newTerm)}
         onTermSubmit={() => console.log('Term submitted!')}
       />
-      <Text>{term}</Text>
     </View>
   );
 };
