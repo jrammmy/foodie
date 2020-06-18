@@ -1,36 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, ScrollView, Text} from 'react-native';
-import RestaurantCard from '../components/restaurant-card';
-import SearchBar from '../components/search-bar';
-import yelp from '../api/yelp';
+import React, {useState} from 'react';
+import {View, StyleSheet, Text} from 'react-native';
+import SearchBar from '../components/SearchBar';
+import useResults from '../hooks/useResults';
 
 const SearchScreen = () => {
   const [term, setTerm] = useState('');
-  const [results, setResults] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const searchApi = async (searchTerm) => {
-    try {
-      const response = await yelp.get('/search', {
-        params: {
-          limit: 50,
-          term: searchTerm,
-          location: 'santa cruz',
-        },
-      });
-      setResults(response.data.businesses);
-    } catch (err) {
-      console.log(err);
-      setErrorMessage('Something went wrong.');
-    }
-  };
-
-  // ensures that code is ran only once when the compent renders
-  useEffect(() => {
-    // idea: based on time of day, update default to be breakfast, lunch, dinner, or late night
-    searchApi('pizza');
-  }, []);
-
+  const [searchApi, results, errorMessage] = useResults();
   return (
     <View style={styles.container}>
       <SearchBar

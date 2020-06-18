@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
-const RestaurantCard = () => {
+const ResultsList = () => {
   return <View style={styles.imageContainer} />;
 };
 
@@ -10,8 +10,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 200,
     borderWidth: 2,
-
   },
 });
 
-export default RestaurantCard;
+export default ResultsList;
