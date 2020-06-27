@@ -1,20 +1,18 @@
 import React from 'react';
-import {View, StyleSheet, Text, FlatList} from 'react-native';
+import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import ResultsDetail from './ResultsDetail';
 
 const ResultsList = ({title, results, style}) => {
+  const list = results.map((result) => (
+    <ResultsDetail key={result.id} result={result} />
+  ));
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={results}
-        keyExtractor={(result) => result.id}
-        renderItem={({item}) => {
-          return <ResultsDetail result={item} />;
-        }}
-      />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {list}
+      </ScrollView>
     </View>
   );
 };
