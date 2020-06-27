@@ -1,15 +1,35 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text, FlatList} from 'react-native';
+import ResultsDetail from './ResultsDetail';
 
-const ResultsList = () => {
-  return <View style={styles.imageContainer} />;
+const ResultsList = ({title, results, style}) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={results}
+        keyExtractor={(result) => result.id}
+        renderItem={({item}) => {
+          return <ResultsDetail result={item} />;
+        }}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    height: 150,
-    width: 200,
-    borderWidth: 2,
+  container: {
+    marginBottom: 15,
+    borderBottomWidth: 2,
+    paddingBottom: 15,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 5,
   },
 });
 
