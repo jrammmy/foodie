@@ -2,14 +2,16 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchScreen from './src/screens/SearchScreen';
+import ShowDetailsScreen from './src/screens/ShowDetailsScreen';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Search">
         <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="Details" component={ShowDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

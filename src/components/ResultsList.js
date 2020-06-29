@@ -1,11 +1,21 @@
 import React from 'react';
-import {View, StyleSheet, Text, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import ResultsDetail from './ResultsDetail';
 
-const ResultsList = ({title, results, style}) => {
-  const list = results.map((result) => (
-    <ResultsDetail key={result.id} result={result} />
-  ));
+const ResultsList = ({title, results, style, navigation}) => {
+  const list = results.map((result) => {
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+        <ResultsDetail key={result.id} result={result} />
+      </TouchableOpacity>
+    );
+  });
 
   return (
     <View style={styles.container}>
